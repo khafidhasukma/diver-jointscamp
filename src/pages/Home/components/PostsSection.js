@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
-import arrow from "../assets/images/icons/arrow.svg";
-import about1 from "../assets/images/about1.png";
+import arrow from "../../../assets/images/icons/arrow.svg";
+import about1 from "../../../assets/images/about1.png";
 
 const PostsSection = () => {
     return (

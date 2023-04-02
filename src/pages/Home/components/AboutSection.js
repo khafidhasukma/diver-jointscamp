@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
-import about1 from "../assets/images/about1.png";
-import about2 from "../assets/images/about2.png";
-import about3 from "../assets/images/about3.png";
-import arrow from "../assets/images/icons/arrow.svg";
+import about1 from "../../../assets/images/about1.png";
+import about2 from "../../../assets/images/about2.png";
+import about3 from "../../../assets/images/about3.png";
+import arrow from "../../../assets/images/icons/arrow.svg";
 
 const AboutSection = () => {
     return (

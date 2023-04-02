@@ -1,4 +1,4 @@
-import arrow from "../assets/images/icons/arrow.svg";
+import arrow from "../../../assets/images/icons/arrow.svg";
 import { NavLink } from "react-router-dom";
 
 const Banner = () => {
