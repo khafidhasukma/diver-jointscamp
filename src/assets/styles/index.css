@@ -10,6 +10,20 @@
     }
 }
 
+@layer components {
+    .title {
+        @apply font-playfair text-4xl font-bold tracking-wide;
+    }
+
+    .subtitle {
+        @apply font-medium leading-7 tracking-wide;
+    }
+
+    .button_primary {
+        @apply flex items-center gap-2 rounded-full px-6 py-2 text-lg font-bold tracking-wide;
+    }
+}
+
 .active {
     @apply font-bold text-primary;
 }

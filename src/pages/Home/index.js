@@ -1,7 +1,15 @@
+import Banner from "../../components/Banner";
+import AboutSection from "../../components/AboutSection";
+import PostsSection from "../../components/PostsSection";
+import ContactSection from "../../components/ContactSection";
+
 const Home = () => {
     return (
         <>
-            <h1 className="mt-24">Ini page home</h1>
+            <Banner />
+            <AboutSection />
+            <PostsSection />
+            <ContactSection />
         </>
     );
 };
