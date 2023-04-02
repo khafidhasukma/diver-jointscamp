@@ -24,7 +24,7 @@ const PostsSection = () => {
                     <NavLink to="/posts/1" className="rounded-2xl bg-white p-3 shadow-box">
                         <img src={about1} className="h-40 w-full rounded-2xl object-cover shadow-box" alt="" />
                         <p className="mb-3 mt-2 text-end text-xs font-semibold text-gray">27 Dec, 2022</p>
-                        <h1 className="text-xl font-extrabold text-darkGray">Dive With Dolphins</h1>
+                        <h1 className="mb-2 text-xl font-extrabold text-darkGray">Dive With Dolphins</h1>
                         <p className="text-sm text-gray1">
                             Emily had always been fascinated by dolphins. When she heard about a place where she could
                             dive with them, she knew she had to go lorem ipsum dolor sit...
@@ -39,7 +39,7 @@ const PostsSection = () => {
                     <NavLink to="/posts/1" className="rounded-2xl bg-white p-3 shadow-box">
                         <img src={about1} className="h-40 w-full rounded-2xl object-cover shadow-box" alt="" />
                         <p className="mb-3 mt-2 text-end text-xs font-semibold text-gray">27 Dec, 2022</p>
-                        <h1 className="text-xl font-extrabold text-darkGray">Dive With Dolphins</h1>
+                        <h1 className="mb-2 text-xl font-extrabold text-darkGray">Dive With Dolphins</h1>
                         <p className="text-sm text-gray1">
                             Emily had always been fascinated by dolphins. When she heard about a place where she could
                             dive with them, she knew she had to go lorem ipsum dolor sit...
@@ -54,7 +54,7 @@ const PostsSection = () => {
                     <NavLink to="/posts/1" className="rounded-2xl bg-white p-3 shadow-box">
                         <img src={about1} className="h-40 w-full rounded-2xl object-cover shadow-box" alt="" />
                         <p className="mb-3 mt-2 text-end text-xs font-semibold text-gray">27 Dec, 2022</p>
-                        <h1 className="text-xl font-extrabold text-darkGray">Dive With Dolphins</h1>
+                        <h1 className="mb-2 text-xl font-extrabold text-darkGray">Dive With Dolphins</h1>
                         <p className="text-sm text-gray1">
                             Emily had always been fascinated by dolphins. When she heard about a place where she could
                             dive with them, she knew she had to go lorem ipsum dolor sit...
@@ -69,7 +69,7 @@ const PostsSection = () => {
                     <NavLink to="/posts/1" className="rounded-2xl bg-white p-3 shadow-box">
                         <img src={about1} className="h-40 w-full rounded-2xl object-cover shadow-box" alt="" />
                         <p className="mb-3 mt-2 text-end text-xs font-semibold text-gray">27 Dec, 2022</p>
-                        <h1 className="text-xl font-extrabold text-darkGray">Dive With Dolphins</h1>
+                        <h1 className="mb-2 text-xl font-extrabold text-darkGray">Dive With Dolphins</h1>
                         <p className="text-sm text-gray1">
                             Emily had always been fascinated by dolphins. When she heard about a place where she could
                             dive with them, she knew she had to go lorem ipsum dolor sit...
