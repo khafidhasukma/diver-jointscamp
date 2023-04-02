@@ -1,0 +1,15 @@
+@import url("font.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-primaryBackground font-plusjakarta text-dark;
+    }
+}
+
+.active {
+    @apply font-bold text-primary;
+}
