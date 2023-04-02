@@ -24,9 +24,9 @@ module.exports = {
                 primary: "#2595C9",
                 primaryBackground: "#E5F3FB",
                 dark: "#1E1B1C",
-                darkGray: '#3D3D3D',
+                darkGray: "#3D3D3D",
                 gray: "#9FA0AB",
-                gray1: '#55565B',
+                gray1: "#55565B",
                 gray2: "#F3F3F3",
             },
             fontFamily: {
@@ -34,7 +34,6 @@ module.exports = {
                 plusjakarta: ["Plus Jakarta Sans", "sans-serif"],
             },
             boxShadow: {
-                navbar: "0px 4px 4px #E5F3FB",
                 box: "0px 4px 4px rgba(0, 0, 0, 0.25)",
                 contactButton: "0px 4px 4px rgba(255, 255, 255, 0.25)",
             },

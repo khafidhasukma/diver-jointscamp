@@ -4,7 +4,7 @@ import logo from "../../assets/images/logo.svg";
 const Navbar = () => {
     return (
         <nav className="sticky top-0">
-            <div className="absolute top-0 w-full bg-white py-2 shadow-navbar">
+            <div className="absolute top-0 w-full bg-white py-2 shadow-box">
                 <div className="container flex items-center justify-between">
                     <NavLink to="/">
                         <img src={logo} width="70px" alt="Logo" />

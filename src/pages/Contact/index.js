@@ -30,15 +30,25 @@ const Contact = () => {
                     <form className="mt-6">
                         <div className="mb-4">
                             <label for="name">Your name</label>
-                            <input type="text" id="name" className="mt-2 w-full rounded-lg bg-gray2 p-2" />
+                            <input
+                                type="text"
+                                id="name"
+                                className="mt-2 w-full rounded-lg bg-gray2 p-2 focus:outline-primary"
+                            />
                         </div>
                         <div className="mb-4">
                             <label for="email">Your email</label>
-                            <input type="email" id="email" className="mt-2 w-full rounded-lg bg-gray2 p-2" />
+                            <input
+                                type="email"
+                                id="email"
+                                className="mt-2 w-full rounded-lg bg-gray2 p-2 focus:outline-primary"
+                            />
                         </div>
                         <div className="mb-8">
                             <label for="email">Your message</label>
-                            <textarea rows="4" className="mt-2 w-full rounded-lg bg-gray2 p-2"></textarea>
+                            <textarea
+                                rows="4"
+                                className="mt-2 w-full rounded-lg bg-gray2 p-2 focus:outline-primary"></textarea>
                         </div>
                         <button className="rounded-lg bg-primary px-4 py-2 font-medium tracking-wider text-white">
                             SEND MESSAGE
