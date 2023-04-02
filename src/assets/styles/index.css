@@ -8,6 +8,15 @@
     body {
         @apply bg-primaryBackground font-plusjakarta text-dark;
     }
+    ::-webkit-scrollbar {
+        @apply w-2.5;
+    }
+    ::-webkit-scrollbar-track {
+        @apply bg-gray2;
+    }
+    ::-webkit-scrollbar-thumb {
+        @apply rounded-full bg-contactBox;
+    }
 }
 
 @layer components {
