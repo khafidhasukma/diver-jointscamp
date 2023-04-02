@@ -3,7 +3,7 @@ import logo from "../../assets/images/logo.svg";
 
 const Footer = () => {
     return (
-        <footer className="bg-primary py-4 text-sm text-white">
+        <footer className="bg-primary py-4 pb-20 text-sm text-white md:pb-4 md:text-base">
             <div className="container flex flex-col items-center">
                 <img src={logo} width="80px" alt="Logo" />
                 <ul className="my-4 flex gap-4">
