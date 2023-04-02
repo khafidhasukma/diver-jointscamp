@@ -7,12 +7,12 @@ import arrow from "../../../assets/images/icons/arrow.svg";
 const AboutSection = () => {
     return (
         <div className="container my-16 grid grid-cols-2 items-center gap-6">
-            <div className="grid grid-cols-2 grid-rows-4 items-center gap-4">
+            <div className="grid grid-cols-2 grid-rows-4 items-center gap-6">
                 <div className="row-span-4 h-full">
                     <img src={about1} className="h-full w-full rounded-2xl object-cover" alt="" />
                 </div>
                 <div className="row-span-4 py-12">
-                    <div className="mb-4 h-full">
+                    <div className="mb-6 h-full">
                         <img src={about2} className="h-full w-full rounded-2xl object-cover" alt="" />
                     </div>
                     <div className="h-full">

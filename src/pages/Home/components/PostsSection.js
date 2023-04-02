@@ -20,7 +20,7 @@ const PostsSection = () => {
                         </NavLink>
                     </div>
                 </div>
-                <div className="grid grid-cols-4 gap-4">
+                <div className="grid grid-cols-4 gap-6">
                     <NavLink to="/posts/1" className="rounded-2xl bg-white p-3 shadow-box">
                         <img src={about1} className="h-40 w-full rounded-2xl object-cover shadow-box" alt="" />
                         <p className="mb-3 mt-2 text-end text-xs font-semibold text-gray">27 Dec, 2022</p>
