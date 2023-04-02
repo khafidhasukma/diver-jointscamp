@@ -35,4 +35,5 @@
 
 .active {
     @apply font-bold text-primary;
+    filter: invert(54%) sepia(31%) saturate(2293%) hue-rotate(167deg) brightness(86%) contrast(80%);
 }
