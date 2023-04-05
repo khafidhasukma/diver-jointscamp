@@ -6,21 +6,21 @@ const PostsSection = () => {
     return (
         <div className="bg-primary py-16 text-white">
             <div className="container">
-                <div className="mb-8 grid grid-cols-2 justify-between gap-6">
-                    <div>
+                <div className="mb-8 grid justify-between gap-6 md:grid-cols-3">
+                    <div className="text-center md:col-span-2 md:text-start">
                         <h1 className="title mb-3">Stories and Adventures</h1>
                         <p className="subtitle">
                             Inspiring Stories and Adventures from Scuba Diving Enthusiasts Around the World
                         </p>
                     </div>
-                    <div className="justify-self-end">
+                    <div className="justify-self-center md:justify-self-end">
                         <NavLink to="/posts" className="button_primary w-max bg-white text-primary">
                             <p>See More</p>
                             <img src={arrow} width="20px" alt="Arrow" />
                         </NavLink>
                     </div>
                 </div>
-                <div className="grid grid-cols-4 gap-6">
+                <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
                     <NavLink to="/posts/1" className="rounded-2xl bg-white p-3 shadow-box">
                         <img src={about1} className="h-40 w-full rounded-2xl object-cover shadow-box" alt="" />
                         <p className="mb-3 mt-2 text-end text-xs font-semibold text-gray">27 Dec, 2022</p>

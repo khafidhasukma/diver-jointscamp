@@ -21,7 +21,7 @@
 
 @layer components {
     .title {
-        @apply font-playfair text-4xl font-bold tracking-wide;
+        @apply font-playfair text-3xl font-bold leading-[3rem] tracking-wide;
     }
 
     .subtitle {
@@ -29,7 +29,7 @@
     }
 
     .button_primary {
-        @apply flex items-center gap-2 rounded-full px-6 py-2 text-lg font-bold tracking-wide;
+        @apply flex items-center gap-2 rounded-full px-6 py-2 font-bold tracking-wide lg:text-lg;
     }
 }
 
