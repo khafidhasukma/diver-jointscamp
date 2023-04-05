@@ -5,9 +5,9 @@ import about2 from "../../assets/images/about2.png";
 
 const Post = () => {
     return (
-        <div className="container py-24">
+        <div className="container py-12 md:py-24">
             <NavLink to="/posts/1">
-                <div className="mb-6 grid grid-cols-2 items-center overflow-hidden rounded-2xl bg-white shadow-box">
+                <div className="mb-6 items-center overflow-hidden rounded-2xl bg-white shadow-box sm:grid sm:grid-cols-2">
                     <img src={about2} className="h-full w-full  object-cover" alt="" />
                     <div className="p-6">
                         <p className="mb-3 text-sm font-semibold text-gray">27 Dec, 2022</p>
@@ -17,7 +17,7 @@ const Post = () => {
                             dive with them, she knew she had to go lorem ipsum dolor sit When she heard about a place
                             where she could dive with them, she knew she had to go lorem ipsum dolor ...
                         </p>
-                        <div className="mt-4">
+                        <div className="mt-6">
                             <button className="flex items-center gap-2 text-primary">
                                 <p className="text-sm font-bold">Read More</p>
                                 <img src={arrow} width="20px" alt="Arrow" />
@@ -26,7 +26,7 @@ const Post = () => {
                     </div>
                 </div>
             </NavLink>
-            <div className="grid grid-cols-4 gap-6">
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
                 <NavLink to="/posts/1" className="rounded-2xl bg-white p-3 shadow-box">
                     <img src={about1} className="h-40 w-full rounded-2xl object-cover shadow-box" alt="" />
                     <p className="mb-3 mt-2 text-end text-xs font-semibold text-gray">27 Dec, 2022</p>

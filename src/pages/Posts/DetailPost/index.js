@@ -2,10 +2,10 @@ import about2 from "../../../assets/images/about2.png";
 
 const DetailPost = () => {
     return (
-        <div className="container pb-20 pt-24">
-            <img src={about2} className="h-96 w-full rounded-2xl object-cover shadow-box" alt="" />
+        <div className="container py-12 md:py-24">
+            <img src={about2} className="h-60 w-full rounded-2xl object-cover shadow-box md:h-96" alt="" />
             <p className="mb-6 mt-4 font-semibold text-gray">27 Dec, 2022</p>
-            <h1 className="mb-8 text-center text-3xl font-extrabold text-darkGray">Dive With Dolphins</h1>
+            <h1 className="mb-8 text-center text-2xl font-extrabold text-darkGray md:text-3xl">Dive With Dolphins</h1>
             <p className="text-justify">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Facilisi faucibus orci, cras semper quis amet.
                 Mattis etiam ultrices eget consequat morbi. Volutpat dolor neque dignissim nisl aliquet tempor lorem sit
