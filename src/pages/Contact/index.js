@@ -5,8 +5,8 @@ import instagram from "../../assets/images/icons/instagram.svg";
 
 const Contact = () => {
     return (
-        <div className="container pb-16 pt-24">
-            <div className="grid grid-cols-2 gap-6 overflow-hidden rounded-2xl bg-white shadow-box">
+        <div className="container py-12 md:py-24">
+            <div className="gap-6 overflow-hidden rounded-2xl bg-white shadow-box md:grid md:grid-cols-2">
                 <div className="px-8 py-12">
                     <div className="mb-6 flex gap-4">
                         <a href="https://www.facebook.com">
@@ -20,7 +20,7 @@ const Contact = () => {
                         </a>
                     </div>
 
-                    <h1 className="mb-2 text-3xl font-extrabold">
+                    <h1 className="mb-2 text-2xl font-extrabold md:text-3xl">
                         Let's <span className="text-primary">Talk</span>
                     </h1>
                     <p>
@@ -50,12 +50,12 @@ const Contact = () => {
                                 rows="4"
                                 className="mt-2 w-full rounded-lg bg-gray2 p-2 focus:outline-primary"></textarea>
                         </div>
-                        <button className="rounded-lg bg-primary px-4 py-2 font-medium tracking-wider text-white">
+                        <button className="w-full rounded-lg bg-primary px-4 py-2 font-medium tracking-wider text-white md:w-max">
                             SEND MESSAGE
                         </button>
                     </form>
                 </div>
-                <img src={contactImage} className="h-full object-cover" alt="" />
+                <img src={contactImage} className="hidden h-full object-cover md:block" alt="" />
             </div>
         </div>
     );
