@@ -14,7 +14,7 @@ const Banner = () => {
                         Scuba Diving Enthusiast
                     </p>
                     <NavLink
-                        to="/post"
+                        to="/posts"
                         className="button_primary group bg-white text-primary transition-all duration-300 ease-in-out hover:border-primary hover:bg-primary hover:text-white">
                         <p>Explore Now</p>
                         <img
