@@ -41,15 +41,25 @@ const PostsSection = () => {
                         </p>
                     </div>
                     <div className="justify-self-center md:justify-self-end">
-                        <NavLink to="/posts" className="button_primary w-max bg-white text-primary">
+                        <NavLink
+                            to="/posts"
+                            className="button_primary group bg-white text-primary transition-all duration-300 ease-in-out hover:border-primary hover:bg-slate-100">
                             <p>See More</p>
-                            <img src={arrow} width="20px" alt="Arrow" />
+                            <img
+                                className="ml-2 transform transition-all duration-300 ease-in-out group-hover:translate-x-2"
+                                src={arrow}
+                                width="20px"
+                                alt="Arrow"
+                            />
                         </NavLink>
                     </div>
                 </div>
                 <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
                     {posts.slice(0, 4).map((post) => (
-                        <NavLink key={post.id} to={`/posts/${post.id}`} className="rounded-2xl bg-white p-3 shadow-box">
+                        <NavLink
+                            key={post.id}
+                            to={`/posts/${post.id}`}
+                            className="group rounded-2xl bg-white p-3 shadow-box transition-all duration-300 ease-in-out hover:border-hoverbox hover:bg-hoverbox">
                             <img src={post.photo} className="h-40 w-full rounded-2xl object-cover shadow-box" alt="" />
                             <p className="mb-3 mt-2 text-end text-xs font-semibold text-gray">{post.created_at}</p>
                             <h1 className="mb-2 text-xl font-extrabold text-darkGray">{post.title}</h1>
@@ -57,7 +67,12 @@ const PostsSection = () => {
                             <div className="mt-4 flex justify-end">
                                 <button className="flex items-center gap-2 text-primary">
                                     <p className="text-sm font-bold">Read More</p>
-                                    <img src={arrow} width="20px" alt="Arrow" />
+                                    <img
+                                        className="transform transition-all duration-300 ease-in-out group-hover:translate-x-1"
+                                        src={arrow}
+                                        width="20px"
+                                        alt="Arrow"
+                                    />
                                 </button>
                             </div>
                         </NavLink>

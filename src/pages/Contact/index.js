@@ -41,7 +41,7 @@ const Contact = () => {
             });
     };
     return (
-        <div className="container py-12 md:py-24">
+        <div className="container min-h-screen py-12 md:py-24">
             <ToastContainer
                 position="top-right"
                 autoClose={3000}
@@ -57,13 +57,19 @@ const Contact = () => {
             <div className="gap-6 overflow-hidden rounded-2xl bg-white shadow-box md:grid md:grid-cols-2">
                 <div className="px-8 py-12">
                     <div className="mb-6 flex gap-4">
-                        <a href="https://web.facebook.com/jointsugm?_rdc=1&_rdr">
+                        <a
+                            href="https://web.facebook.com/jointsugm?_rdc=1&_rdr"
+                            className="transition-all duration-200 ease-in-out hover:scale-105">
                             <img src={facebook} alt="Facebook" />
                         </a>
-                        <a href="https://twitter.com/jointsugm">
+                        <a
+                            href="https://twitter.com/jointsugm"
+                            className="transition-all duration-200 ease-in-out hover:scale-105">
                             <img src={twitter} alt="Twitter" />
                         </a>
-                        <a href="https://www.instagram.com/jointsugm/">
+                        <a
+                            href="https://www.instagram.com/jointsugm/"
+                            className="transition-all duration-200 ease-in-out hover:scale-105">
                             <img src={instagram} alt="Instagram" />
                         </a>
                     </div>
@@ -110,7 +116,7 @@ const Contact = () => {
                         </div>
                         <button
                             type="submit"
-                            className="w-full rounded-lg bg-primary px-4 py-2 font-medium tracking-wider text-white md:w-max">
+                            className="w-full rounded-lg bg-primary px-4 py-2 font-medium tracking-wider text-white transition-all duration-300 ease-in-out hover:border-primary2 hover:bg-primary2 hover:text-white md:w-max">
                             SEND MESSAGE
                         </button>
                     </form>

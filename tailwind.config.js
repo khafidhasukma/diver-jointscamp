@@ -22,12 +22,14 @@ module.exports = {
         extend: {
             colors: {
                 primary: "#2595C9",
+                primary2: "#1C7DAA",
                 primaryBackground: "#E5F3FB",
                 dark: "#1E1B1C",
                 darkGray: "#3D3D3D",
                 gray: "#9FA0AB",
                 gray1: "#55565B",
                 gray2: "#F3F3F3",
+                hoverbox: "#F2F2F2",
             },
             fontFamily: {
                 playfair: ["Playfair Display", "serif"],

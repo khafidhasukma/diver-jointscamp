@@ -32,9 +32,16 @@ const AboutSection = () => {
                     providing resources for anyone who is interested in exploring the world beneath the surface. Join me
                     on this journey, and let's discover the beauty of the underwater world together.
                 </p>
-                <NavLink to="/about" className="button_primary mx-auto w-max bg-primary text-white md:mx-0">
+                <NavLink
+                    to="/about"
+                    className="button_primary group mx-auto w-max bg-primary text-white transition-all duration-300 ease-in-out hover:border-primary2 hover:bg-primary2 hover:text-white md:mx-0">
                     <p>About Me</p>
-                    <img src={arrow} width="20px" className="brightness-0 invert" alt="Arrow" />
+                    <img
+                        src={arrow}
+                        width="20px"
+                        className="ml-2 transform brightness-0 invert transition-all duration-300 ease-in-out group-hover:translate-x-2"
+                        alt="Arrow"
+                    />
                 </NavLink>
             </div>
         </div>

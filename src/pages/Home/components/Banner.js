@@ -13,9 +13,16 @@ const Banner = () => {
                         Explore the Depths Through the Eyes of <span className="underline">John Doe</span>, a Seasoned
                         Scuba Diving Enthusiast
                     </p>
-                    <NavLink to="/post" className="button_primary w-max bg-white text-primary">
+                    <NavLink
+                        to="/post"
+                        className="button_primary group bg-white text-primary transition-all duration-300 ease-in-out hover:border-primary hover:bg-primary hover:text-white">
                         <p>Explore Now</p>
-                        <img src={arrow} width="20px" alt="Arrow" />
+                        <img
+                            className="ml-2 transform transition-all duration-300 ease-in-out group-hover:translate-x-2 group-hover:brightness-0 group-hover:invert"
+                            src={arrow}
+                            width="20px"
+                            alt="Arrow"
+                        />
                     </NavLink>
                 </div>
             </div>

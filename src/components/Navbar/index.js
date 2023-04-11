@@ -9,7 +9,7 @@ const Navbar = () => {
     return (
         <>
             {/* Desktop and tablet mode */}
-            <nav className="hidden md:sticky md:top-0 md:block">
+            <nav className="z-10 hidden md:sticky md:top-0 md:block">
                 <div className="absolute top-0 w-full bg-white py-2 shadow-box">
                     <div className="container flex items-center justify-between">
                         <NavLink to="/">

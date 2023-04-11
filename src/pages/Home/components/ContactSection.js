@@ -8,7 +8,9 @@ const ContactSection = () => {
                 <p className="subtitle mb-6 text-center md:w-2/3 lg:w-1/2">
                     Connect with Me to Explore the Hidden Treasures of the Ocean and Create Lasting Memories
                 </p>
-                <NavLink to="/contact" className="button_primary bg-white text-primary shadow-contactButton">
+                <NavLink
+                    to="/contact"
+                    className="button_primary group bg-white text-primary shadow-contactButton transition-all duration-300 ease-in-out hover:border-primary hover:bg-primary hover:text-white">
                     Contact Me
                 </NavLink>
             </div>

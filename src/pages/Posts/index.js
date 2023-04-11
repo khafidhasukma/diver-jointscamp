@@ -30,10 +30,10 @@ const Post = () => {
     };
 
     return (
-        <div className="container py-12 md:py-24">
+        <div className="container min-h-screen py-12 md:py-24">
             {posts[0] && (
                 <NavLink to={`/posts/${posts[0].id}`}>
-                    <div className="mb-6 items-center overflow-hidden rounded-2xl bg-white shadow-box sm:grid sm:grid-cols-2">
+                    <div className="group mb-6 items-center overflow-hidden rounded-2xl bg-white shadow-box transition-all duration-300 ease-in-out hover:border-hoverbox hover:bg-hoverbox sm:grid sm:grid-cols-2">
                         <img src={posts[0].photo} className="h-full w-full  object-cover" alt="" />
                         <div className="p-6">
                             <p className="mb-3 text-sm font-semibold text-gray">{posts[0].created_at}</p>
@@ -42,7 +42,12 @@ const Post = () => {
                             <div className="mt-6">
                                 <button className="flex items-center gap-2 text-primary">
                                     <p className="text-sm font-bold">Read More</p>
-                                    <img src={arrow} width="20px" alt="Arrow" />
+                                    <img
+                                        className="transform transition-all duration-300 ease-in-out group-hover:translate-x-1"
+                                        src={arrow}
+                                        width="20px"
+                                        alt="Arrow"
+                                    />
                                 </button>
                             </div>
                         </div>
@@ -52,7 +57,10 @@ const Post = () => {
 
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
                 {posts.slice(1).map((post) => (
-                    <NavLink key={post.id} to={`/posts/${post.id}`} className="rounded-2xl bg-white p-3 shadow-box">
+                    <NavLink
+                        key={post.id}
+                        to={`/posts/${post.id}`}
+                        className="group rounded-2xl bg-white p-3 shadow-box transition-all duration-300 ease-in-out hover:border-hoverbox hover:bg-hoverbox">
                         <img src={post.photo} className="h-40 w-full rounded-2xl object-cover shadow-box" alt="" />
                         <p className="mb-3 mt-2 text-end text-xs font-semibold text-gray">{post.created_at}</p>
                         <h1 className="mb-2 text-xl font-extrabold text-darkGray">{post.title}</h1>
@@ -60,7 +68,12 @@ const Post = () => {
                         <div className="mt-4 flex justify-end">
                             <button className="flex items-center gap-2 text-primary">
                                 <p className="text-sm font-bold">Read More</p>
-                                <img src={arrow} width="20px" alt="Arrow" />
+                                <img
+                                    className="transform transition-all duration-300 ease-in-out group-hover:translate-x-1"
+                                    src={arrow}
+                                    width="20px"
+                                    alt="Arrow"
+                                />
                             </button>
                         </div>
                     </NavLink>
