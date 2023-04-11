@@ -1,4 +1,3 @@
-import about2 from "../../../assets/images/about2.png";
 import axiosInstance from "../../../utils/axios";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
