@@ -22,6 +22,12 @@ const Post = () => {
                 console.log(error);
             });
     }, []);
+    const trimDescription = (description, maxLength) => {
+        if (description.length > maxLength) {
+            return description.substring(0, maxLength) + " ...";
+        }
+        return description;
+    };
 
     return (
         <div className="container py-12 md:py-24">
@@ -32,7 +38,7 @@ const Post = () => {
                         <div className="p-6">
                             <p className="mb-3 text-sm font-semibold text-gray">{posts[0].created_at}</p>
                             <h1 className="mb-6 text-2xl font-extrabold text-darkGray">{posts[0].title}</h1>
-                            <p className="text-gray1">{posts[0].description}</p>
+                            <p className="text-gray1">{trimDescription(posts[0].description, 120)}</p>
                             <div className="mt-6">
                                 <button className="flex items-center gap-2 text-primary">
                                     <p className="text-sm font-bold">Read More</p>
@@ -50,7 +56,7 @@ const Post = () => {
                         <img src={post.photo} className="h-40 w-full rounded-2xl object-cover shadow-box" alt="" />
                         <p className="mb-3 mt-2 text-end text-xs font-semibold text-gray">{post.created_at}</p>
                         <h1 className="mb-2 text-xl font-extrabold text-darkGray">{post.title}</h1>
-                        <p className="text-sm text-gray1">{post.description}</p>
+                        <p className="text-sm text-gray1">{trimDescription(post.description, 100)}</p>
                         <div className="mt-4 flex justify-end">
                             <button className="flex items-center gap-2 text-primary">
                                 <p className="text-sm font-bold">Read More</p>
