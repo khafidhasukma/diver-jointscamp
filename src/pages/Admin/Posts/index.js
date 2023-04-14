@@ -4,10 +4,14 @@ import axiosInstance from "../../../utils/axios";
 import { useEffect, useState } from "react";
 import moment from "moment";
 import Sidebar from "../../../components/Sidebar";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const PostsAdmin = () => {
     const [posts, setPosts] = useState([]);
-    useEffect(() => {
+
+    // get data
+    const getData = () => {
         axiosInstance
             .get("/story/gets")
             .then((response) => {
@@ -22,7 +26,22 @@ const PostsAdmin = () => {
             .catch((error) => {
                 console.log(error);
             });
-    }, []);
+    };
+
+    // Delete
+    const handleDelete = (id) => {
+        axiosInstance
+            .delete(`/story/delete/${id}`)
+            .then(() => {
+                setPosts(posts.filter((posts) => posts.id !== id));
+                toast.success("Successfully deleted stories!");
+            })
+            .catch((error) => {
+                console.error(error);
+                toast.error("Failed to delete stories.");
+            });
+    };
+
     const trimDescription = (description, maxLength) => {
         if (description.length > maxLength) {
             return description.substring(0, maxLength) + " ...";
@@ -30,8 +49,24 @@ const PostsAdmin = () => {
         return description;
     };
 
+    useEffect(() => {
+        getData();
+    }, []);
+
     return (
         <div className="bg-bgAdmin">
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+            />
             <div className="flex gap-8">
                 <Sidebar />
                 <div className="w-4/5 px-4 py-6">
@@ -61,26 +96,22 @@ const PostsAdmin = () => {
                                 <td width="15%">{post.title}</td>
                                 <td width="45%">{trimDescription(post.description, 50)}</td>
                                 <td width="15%">{post.created_at}</td>
-                                <td width="30%" className="flex gap-2">
-                                    <div>
-                                        <Link
-                                            to={`/admin/posts/show/${post.id}`}
-                                            className="rounded-lg bg-success px-3 py-2 font-bold text-white">
-                                            View
-                                        </Link>
-                                    </div>
-                                    <div>
-                                        <Link
-                                            to="/admin/posts/edit"
-                                            className="rounded-lg bg-primary px-3 py-2 font-bold text-white">
-                                            Edit
-                                        </Link>
-                                    </div>
-                                    <div>
-                                        <Link className="rounded-lg bg-delete px-3 py-2 font-bold text-white">
-                                            Delete
-                                        </Link>
-                                    </div>
+                                <td width="30%" className="flex items-start gap-2">
+                                    <Link
+                                        to={`/admin/posts/show/${post.id}`}
+                                        className="block rounded-lg bg-success px-3 py-2 font-bold text-white">
+                                        View
+                                    </Link>
+                                    <Link
+                                        to="/admin/posts/edit"
+                                        className="block rounded-lg bg-primary px-3 py-2 font-bold text-white">
+                                        Edit
+                                    </Link>
+                                    <button
+                                        onClick={() => handleDelete(post.id)}
+                                        className="rounded-lg border-none bg-delete px-3 py-2 font-bold text-white">
+                                        Delete
+                                    </button>
                                 </td>
                             </tr>
                         ))}

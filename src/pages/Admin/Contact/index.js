@@ -3,10 +3,13 @@ import axiosInstance from "../../../utils/axios";
 import { useEffect, useState } from "react";
 import moment from "moment";
 import Sidebar from "../../../components/Sidebar";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ContactAdmin = () => {
     const [contact, setContact] = useState([]);
-    useEffect(() => {
+
+    const getData = () => {
         axiosInstance
             .get("/contact/gets")
             .then((response) => {
@@ -21,7 +24,22 @@ const ContactAdmin = () => {
             .catch((error) => {
                 console.log(error);
             });
-    }, []);
+    };
+
+    // Delete
+    const handleDelete = (id) => {
+        axiosInstance
+            .delete(`/contact/delete/${id}`)
+            .then(() => {
+                setContact(contact.filter((contact) => contact.id !== id));
+                toast.success("Successfully deleted message!");
+            })
+            .catch((error) => {
+                console.error(error);
+                toast.error("Failed to delete message.");
+            });
+    };
+
     const trimDescription = (description, maxLength) => {
         if (description.length > maxLength) {
             return description.substring(0, maxLength) + " ...";
@@ -29,8 +47,24 @@ const ContactAdmin = () => {
         return description;
     };
 
+    useEffect(() => {
+        getData();
+    }, []);
+
     return (
         <div className="bg-bgAdmin">
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+            />
             <div className="flex gap-8">
                 <Sidebar />
 
@@ -49,7 +83,7 @@ const ContactAdmin = () => {
                             <th>Actions</th>
                         </tr>
                         {contact.map((contact, index) => (
-                            <tr>
+                            <tr key={contact.id}>
                                 <td width="5%" className="text-center">
                                     {index + 1}
                                 </td>
@@ -58,18 +92,17 @@ const ContactAdmin = () => {
                                 <td width="30%">{trimDescription(contact.description, 50)}</td>
                                 <td width="20%">{contact.created_at}</td>
                                 <td width="30%" className="flex gap-2">
-                                    <div>
-                                        <Link
-                                            to={`/admin/contact/show/${contact.id}`}
-                                            className="rounded-lg bg-success px-3 py-2 font-bold text-white">
-                                            View
-                                        </Link>
-                                    </div>
-                                    <div>
-                                        <Link className="rounded-lg bg-delete px-3 py-2 font-bold text-white">
-                                            Delete
-                                        </Link>
-                                    </div>
+                                    <Link
+                                        to={`/admin/contact/show/${contact.id}`}
+                                        className="block rounded-lg bg-success px-3 py-2 font-bold text-white">
+                                        View
+                                    </Link>
+
+                                    <button
+                                        onClick={() => handleDelete(contact.id)}
+                                        className="rounded-lg bg-delete px-3 py-2 font-bold text-white">
+                                        Delete
+                                    </button>
                                 </td>
                             </tr>
                         ))}
