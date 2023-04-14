@@ -30,6 +30,10 @@ module.exports = {
                 gray1: "#55565B",
                 gray2: "#F3F3F3",
                 hoverbox: "#F2F2F2",
+                bgAdmin: "#F5F6F8",
+                darkBlue: "#152C70",
+                success: "#257F39",
+                delete: "#F13810",
             },
             fontFamily: {
                 playfair: ["Playfair Display", "serif"],
@@ -39,6 +43,7 @@ module.exports = {
                 box: "0px 4px 4px rgba(0, 0, 0, 0.25)",
                 contactButton: "0px 4px 4px rgba(255, 255, 255, 0.25)",
                 menu: "0 0 5px #7f89a1",
+                sidebar: "6px 0px 18px rgba(0, 0, 0, 0.06)",
             },
             backgroundImage: {
                 banner: "url(/src/assets/images/banner.png)",

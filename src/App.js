@@ -7,6 +7,10 @@ import About from "./pages/About";
 import Post from "./pages/Posts";
 import DetailPost from "./pages/Posts/DetailPost";
 import Contact from "./pages/Contact";
+import Login from "./pages/Admin/Login";
+import PostsAdmin from "./pages/Admin/Posts";
+import CreatePost from "./pages/Admin/Posts/create";
+import ContactAdmin from "./pages/Admin/Contact";
 
 const Layout = ({ children }) => {
     // Scroll to top on page transition
@@ -69,6 +73,10 @@ const App = () => {
                         </Layout>
                     }
                 />
+                <Route path="/login" element={<Login />} />
+                <Route path="/admin/posts" element={<PostsAdmin />} />
+                <Route path="/admin/posts/create" element={<CreatePost />} />
+                <Route path="/admin/contact" element={<ContactAdmin />} />
             </Routes>
         </Router>
     );
