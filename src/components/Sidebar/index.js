@@ -1,5 +1,6 @@
 import logo from "../../assets/images/logo.svg";
 import profile from "../../assets/images/icons/profile.svg";
+import logout from "../../assets/images/icons/logout.svg";
 import stories from "../../assets/images/icons/tasks-active.svg";
 import adminContact from "../../assets/images/icons/adminContact.svg";
 import { NavLink } from "react-router-dom";
@@ -23,7 +24,11 @@ const Sidebar = () => {
                 </div>
                 <ul className="flex flex-col gap-4">
                     <li>
-                        <NavLink exact to="/admin/posts" className="font-medium tracking-wide" activeClassName="active">
+                        <NavLink
+                            exact
+                            to="/admin/posts"
+                            className="text-sm font-medium tracking-wide"
+                            activeClassName="active">
                             <div className="flex items-center gap-4">
                                 <img src={stories} className="img-sidebar" alt="" />
                                 <p>Stories</p>
@@ -31,7 +36,10 @@ const Sidebar = () => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/admin/contact" className="font-medium tracking-wide" activeClassName="active">
+                        <NavLink
+                            to="/admin/contact"
+                            className="text-sm font-medium tracking-wide"
+                            activeClassName="active">
                             <div className="flex items-center gap-4">
                                 <img src={adminContact} className="img-sidebar" alt="" />
                                 <p>Contact</p>
@@ -39,8 +47,9 @@ const Sidebar = () => {
                         </NavLink>
                     </li>
                 </ul>
-                <button className="absolute bottom-0 left-0 w-full bg-red-600 py-4 font-bold text-white">
-                    Sign Out
+                <button className="absolute bottom-0 left-0 flex w-full justify-center gap-2 bg-darkBlue py-4 font-bold text-white">
+                    <p>Sign Out</p>
+                    <img src={logout} alt="" />
                 </button>
             </div>
         </>

@@ -30,7 +30,7 @@ const ContactAdmin = () => {
     };
 
     return (
-        <div className="bg-bgAdmin text-sm">
+        <div className="bg-bgAdmin">
             <div className="flex gap-8">
                 <Sidebar />
 
@@ -41,7 +41,7 @@ const ContactAdmin = () => {
 
                     <table className="mt-8 w-full rounded-lg bg-white">
                         <tr className="border-b text-gray">
-                            <th>No</th>
+                            <th></th>
                             <th className="text-start">Name</th>
                             <th className="text-start">Email</th>
                             <th className="text-start">Message</th>
@@ -59,12 +59,14 @@ const ContactAdmin = () => {
                                 <td width="20%">{contact.created_at}</td>
                                 <td width="30%" className="flex gap-2">
                                     <div>
-                                        <Link className="rounded bg-success px-5 py-2 font-medium text-white">
+                                        <Link
+                                            to={`/admin/contact/show/${contact.id}`}
+                                            className="rounded-lg bg-success px-3 py-2 font-bold text-white">
                                             View
                                         </Link>
                                     </div>
                                     <div>
-                                        <Link className="rounded bg-delete px-5 py-2 font-medium text-white">
+                                        <Link className="rounded-lg bg-delete px-3 py-2 font-bold text-white">
                                             Delete
                                         </Link>
                                     </div>
