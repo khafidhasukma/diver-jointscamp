@@ -38,7 +38,7 @@ const Post = () => {
                         <div className="p-6">
                             <p className="mb-3 text-sm font-semibold text-gray">{posts[0].created_at}</p>
                             <h1 className="mb-6 text-2xl font-extrabold text-darkGray">{posts[0].title}</h1>
-                            <p className="text-gray1">{trimDescription(posts[0].description, 120)}</p>
+                            <p className="text-gray1">{trimDescription(posts[0].description, 300)}</p>
                             <div className="mt-6">
                                 <button className="flex items-center gap-2 text-primary">
                                     <p className="text-sm font-bold">Read More</p>
