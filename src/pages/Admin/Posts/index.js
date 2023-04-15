@@ -32,7 +32,11 @@ const PostsAdmin = () => {
     // Delete
     const handleDelete = (id) => {
         axiosInstance
-            .delete(`/story/delete/${id}`)
+            .delete(`/story/delete/${id}`, {
+                headers: {
+                    Authorization: `${localStorage.getItem("Token")}`,
+                },
+            })
             .then(() => {
                 setPosts(posts.filter((post) => post.id !== id));
                 toast.success("Stories successfully deleted!");

@@ -56,6 +56,7 @@ const EditPost = () => {
             .patch(`/story/update/${id}`, data, {
                 headers: {
                     "Content-Type": "multipart/form-data",
+                    Authorization: `${localStorage.getItem("Token")}`,
                 },
             })
             .then(() => {

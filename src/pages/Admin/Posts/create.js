@@ -36,6 +36,7 @@ const CreatePost = () => {
         axiosInstance
             .post("/story/create", data, {
                 headers: {
+                    Authorization: `${localStorage.getItem("Token")}`,
                     "Content-Type": "multipart/form-data",
                 },
             })
