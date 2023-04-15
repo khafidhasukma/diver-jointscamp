@@ -7,12 +7,15 @@ import "react-toastify/dist/ReactToastify.css";
 import upload from "../../../assets/images/icons/upload.svg";
 
 const CreatePost = () => {
-    const [photo, setPhoto] = useState("");
+    const [photo, setPhoto] = useState(null);
+    const [photoUrl, setPhotoUrl] = useState(null);
     const [title, setTitle] = useState("");
     const [description, setMessage] = useState("");
 
     const handlePhotoChange = (e) => {
-        setPhoto(e.target.value);
+        const file = e.target.files[0];
+        setPhoto(file);
+        setPhotoUrl(URL.createObjectURL(file));
     };
 
     const handleTitleChange = (e) => {
@@ -25,20 +28,32 @@ const CreatePost = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const data = { title, description };
+        const data = new FormData();
+        const post = { title, description };
+        data.append("data", JSON.stringify(post));
+        data.append("file", photo);
+        const config = {
+            headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Bearer ${localStorage.getItem("Token")}`,
+            },
+        };
+
         axiosInstance
-            .post("/story/create", data)
+            .post("/story/create", data, config)
             .then(() => {
                 toast.success("Pesan berhasil terkirim!");
                 setTitle("");
                 setMessage("");
-                setPhoto("");
+                setPhoto(null);
+                setPhotoUrl(null);
             })
             .catch((error) => {
                 console.log(error);
                 toast.error(error.message);
             });
     };
+
     return (
         <div className="bg-bgAdmin">
             <ToastContainer
@@ -55,7 +70,7 @@ const CreatePost = () => {
             />
             <div className="flex">
                 <Sidebar />
-                <div className="w-4/5 px-8 py-6">
+                <div className="h-screen w-4/5 overflow-y-scroll px-4 py-6">
                     <h1 className="relative mb-8 text-2xl font-extrabold text-gray1 after:absolute after:-bottom-2 after:left-0 after:h-[1.5px] after:w-full after:bg-[#EBEFF2] md:text-3xl">
                         Add Stories
                     </h1>
@@ -66,14 +81,20 @@ const CreatePost = () => {
                         <form className="mt-6 grid grid-cols-3 gap-6" onSubmit={handleSubmit}>
                             <div>
                                 <label for="photo" className="cursor-pointer">
-                                    <div className="flex h-full w-full items-center justify-center rounded-lg bg-gray2">
-                                        <img src={upload} className="h-16" alt="" />
-                                    </div>
+                                    {photoUrl ? (
+                                        <div className="h-80 w-full overflow-hidden rounded-lg">
+                                            <img src={photoUrl} alt="Preview" className="h-full w-full object-cover" />
+                                        </div>
+                                    ) : (
+                                        <div className="flex h-full w-full items-center justify-center rounded-lg bg-gray2">
+                                            <img src={upload} className="h-16" alt="" />
+                                        </div>
+                                    )}
                                 </label>
                                 <input
                                     type="file"
                                     id="photo"
-                                    value={photo}
+                                    accept="image/*"
                                     onChange={handlePhotoChange}
                                     className="hidden"
                                     required

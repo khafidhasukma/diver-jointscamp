@@ -28,8 +28,14 @@ const ContactAdmin = () => {
 
     // Delete
     const handleDelete = (id) => {
+        const config = {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("Token")}`,
+            },
+        };
+
         axiosInstance
-            .delete(`/contact/delete/${id}`)
+            .delete(`/contact/delete/${id}`, config)
             .then(() => {
                 setContact(contact.filter((contact) => contact.id !== id));
                 toast.success("Successfully deleted message!");
@@ -68,7 +74,7 @@ const ContactAdmin = () => {
             <div className="flex gap-8">
                 <Sidebar />
 
-                <div className="w-4/5 px-4 py-6">
+                <div className="h-screen w-4/5 overflow-y-scroll px-4 py-6">
                     <h1 className="relative mb-2 text-2xl font-extrabold text-gray1 after:absolute after:-bottom-2 after:left-0 after:h-[1.5px] after:w-full after:bg-[#EBEFF2] md:text-3xl">
                         Contact
                     </h1>
