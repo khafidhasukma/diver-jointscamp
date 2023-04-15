@@ -28,14 +28,8 @@ const ContactAdmin = () => {
 
     // Delete
     const handleDelete = (id) => {
-        const config = {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem("Token")}`,
-            },
-        };
-
         axiosInstance
-            .delete(`/contact/delete/${id}`, config)
+            .delete(`/contact/delete/${id}`)
             .then(() => {
                 setContact(contact.filter((contact) => contact.id !== id));
                 toast.success("Successfully deleted message!");

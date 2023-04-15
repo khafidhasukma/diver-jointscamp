@@ -32,15 +32,13 @@ const CreatePost = () => {
         const post = { title, description };
         data.append("data", JSON.stringify(post));
         data.append("file", photo);
-        const config = {
-            headers: {
-                "Content-Type": "multipart/form-data",
-                Authorization: `Bearer ${localStorage.getItem("Token")}`,
-            },
-        };
 
         axiosInstance
-            .post("/story/create", data, config)
+            .post("/story/create", data, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            })
             .then(() => {
                 toast.success("Pesan berhasil terkirim!");
                 setTitle("");

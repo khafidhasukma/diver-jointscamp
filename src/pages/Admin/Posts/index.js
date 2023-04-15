@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const PostsAdmin = () => {
     const [posts, setPosts] = useState([]);
+    const [searchQuery, setSearchQuery] = useState("");
 
     // get data
     const getData = () => {
@@ -30,14 +31,8 @@ const PostsAdmin = () => {
 
     // Delete
     const handleDelete = (id) => {
-        const config = {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem("Token")}`,
-            },
-        };
-
         axiosInstance
-            .delete(`/story/delete/${id}`, config)
+            .delete(`/story/delete/${id}`)
             .then(() => {
                 setPosts(posts.filter((post) => post.id !== id));
                 toast.success("Successfully deleted stories!");
@@ -81,7 +76,12 @@ const PostsAdmin = () => {
                     </h1>
                     <div className="my-8 flex w-full gap-4 rounded-lg bg-white px-4 py-2">
                         <img src={search} width="28" alt="" />
-                        <input type="text" placeholder="Search Stories" className="w-full py-2 outline-none" />
+                        <input
+                            type="text"
+                            placeholder="Search Stories"
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="w-full py-2 outline-none"
+                        />
                     </div>
                     <Link to="/admin/posts/create" className="rounded-lg bg-darkBlue px-8 py-3 font-bold text-white">
                         Add Stories
@@ -94,33 +94,35 @@ const PostsAdmin = () => {
                             <th className="text-start">Date Posting</th>
                             <th>Action</th>
                         </tr>
-                        {posts.map((post, index) => (
-                            <tr key={post.id}>
-                                <td width="5%" className="text-center">
-                                    {index + 1}
-                                </td>
-                                <td width="15%">{post.title}</td>
-                                <td width="45%">{trimDescription(post.description, 50)}</td>
-                                <td width="15%">{post.created_at}</td>
-                                <td width="30%" className="flex items-start gap-2">
-                                    <Link
-                                        to={`/admin/posts/show/${post.id}`}
-                                        className="block rounded-lg bg-success px-3 py-2 font-bold text-white">
-                                        View
-                                    </Link>
-                                    <Link
-                                        to="/admin/posts/edit"
-                                        className="block rounded-lg bg-primary px-3 py-2 font-bold text-white">
-                                        Edit
-                                    </Link>
-                                    <button
-                                        onClick={() => handleDelete(post.id)}
-                                        className="rounded-lg border-none bg-delete px-3 py-2 font-bold text-white">
-                                        Delete
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
+                        {posts
+                            .filter((post) => post.title.toLowerCase().includes(searchQuery.toLowerCase()))
+                            .map((post, index) => (
+                                <tr key={post.id}>
+                                    <td width="5%" className="text-center">
+                                        {index + 1}
+                                    </td>
+                                    <td width="30%">{post.title}</td>
+                                    <td width="30%">{trimDescription(post.description, 50)}</td>
+                                    <td width="15%">{post.created_at}</td>
+                                    <td width="30%" className="flex items-start gap-2">
+                                        <Link
+                                            to={`/admin/posts/show/${post.id}`}
+                                            className="block rounded-lg bg-success px-3 py-2 font-bold text-white">
+                                            View
+                                        </Link>
+                                        <Link
+                                            to="/admin/posts/edit"
+                                            className="block rounded-lg bg-primary px-3 py-2 font-bold text-white">
+                                            Edit
+                                        </Link>
+                                        <button
+                                            onClick={() => handleDelete(post.id)}
+                                            className="rounded-lg border-none bg-delete px-3 py-2 font-bold text-white">
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
                     </table>
                 </div>
             </div>
