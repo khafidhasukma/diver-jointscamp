@@ -14,6 +14,7 @@ import ShowPost from "./pages/Admin/Posts/show";
 import EditPost from "./pages/Admin/Posts/edit";
 import ContactAdmin from "./pages/Admin/Contact";
 import ShowContact from "./pages/Admin/Contact/show";
+import PrivateRouter from "./router/PrivateRouter";
 
 const Layout = ({ children }) => {
     // Scroll to top on page transition
@@ -77,12 +78,14 @@ const App = () => {
                     }
                 />
                 <Route path="/login" element={<Login />} />
-                <Route path="/admin/posts" element={<PostsAdmin />} />
-                <Route path="/admin/posts/create" element={<CreatePost />} />
-                <Route path="/admin/posts/edit" element={<EditPost />} />
-                <Route path="/admin/posts/show/:id" element={<ShowPost />} />
-                <Route path="/admin/contact" element={<ContactAdmin />} />
-                <Route path="/admin/contact/show/:id" element={<ShowContact />} />
+                <Route element={<PrivateRouter/>}>
+                    <Route path="/admin/posts" element={<PostsAdmin />} />
+                    <Route path="/admin/posts/create" element={<CreatePost />} />
+                    <Route path="/admin/posts/edit" element={<EditPost />} />
+                    <Route path="/admin/posts/show/:id" element={<ShowPost />} />
+                    <Route path="/admin/contact" element={<ContactAdmin />} />
+                    <Route path="/admin/contact/show/:id" element={<ShowContact />} />
+                </Route>
             </Routes>
         </Router>
     );
