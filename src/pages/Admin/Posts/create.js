@@ -66,7 +66,7 @@ const CreatePost = () => {
                 pauseOnHover
                 theme="colored"
             />
-            <div className="flex">
+            <div className="flex gap-8">
                 <Sidebar />
                 <div className="h-screen w-4/5 overflow-y-scroll px-4 py-6">
                     <h1 className="relative mb-8 text-2xl font-extrabold text-gray1 after:absolute after:-bottom-2 after:left-0 after:h-[1.5px] after:w-full after:bg-[#EBEFF2] md:text-3xl">

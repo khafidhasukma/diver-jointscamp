@@ -111,7 +111,7 @@ const PostsAdmin = () => {
                                             View
                                         </Link>
                                         <Link
-                                            to="/admin/posts/edit"
+                                            to={`/admin/posts/edit/${post.id}`}
                                             className="block rounded-lg bg-primary px-3 py-2 font-bold text-white">
                                             Edit
                                         </Link>

@@ -79,7 +79,7 @@ const App = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/admin/posts" element={<PostsAdmin />} />
                 <Route path="/admin/posts/create" element={<CreatePost />} />
-                <Route path="/admin/posts/edit" element={<EditPost />} />
+                <Route path="/admin/posts/edit/:id" element={<EditPost />} />
                 <Route path="/admin/posts/show/:id" element={<ShowPost />} />
                 <Route path="/admin/contact" element={<ContactAdmin />} />
                 <Route path="/admin/contact/show/:id" element={<ShowContact />} />

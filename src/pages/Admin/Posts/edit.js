@@ -1,18 +1,36 @@
 import Sidebar from "../../../components/Sidebar";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import axiosInstance from "../../../utils/axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import upload from "../../../assets/images/icons/upload.svg";
 
 const EditPost = () => {
-    const [photo, setPhoto] = useState("");
+    const { id } = useParams();
+    const [photo, setPhoto] = useState(null);
+    const [photoUrl, setPhotoUrl] = useState(null);
     const [title, setTitle] = useState("");
-    const [description, setMessage] = useState("");
+    const [description, setDescription] = useState("");
+
+    useEffect(() => {
+        axiosInstance
+            .get(`/story/get/${id}`)
+            .then((response) => {
+                setTitle(response.data.data.title);
+                setDescription(response.data.data.description);
+                setPhotoUrl(response.data.data.photo);
+            })
+            .catch((error) => {
+                console.log(error);
+                toast.error(error.message);
+            });
+    }, [id]);
 
     const handlePhotoChange = (e) => {
-        setPhoto(e.target.value);
+        const file = e.target.files[0];
+        setPhoto(file);
+        setPhotoUrl(URL.createObjectURL(file));
     };
 
     const handleTitleChange = (e) => {
@@ -20,25 +38,35 @@ const EditPost = () => {
     };
 
     const handleDescChange = (e) => {
-        setMessage(e.target.value);
+        setDescription(e.target.value);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const data = { title, description };
+        const data = new FormData();
+        const post = { title, description };
+        data.append("data", JSON.stringify(post));
+        if (photo) {
+            data.append("file", photo);
+        } else {
+            data.append("file", photoUrl);
+        }
+
         axiosInstance
-            .post("/story/create", data)
+            .put(`/story/update/${id}`, data, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            })
             .then(() => {
-                toast.success("Pesan berhasil terkirim!");
-                setTitle("");
-                setMessage("");
-                setPhoto("");
+                toast.success("Stories berhasil diupdate!");
             })
             .catch((error) => {
                 console.log(error);
                 toast.error(error.message);
             });
     };
+
     return (
         <div className="bg-bgAdmin">
             <ToastContainer
@@ -53,7 +81,7 @@ const EditPost = () => {
                 pauseOnHover
                 theme="colored"
             />
-            <div className="flex">
+            <div className="flex gap-8">
                 <Sidebar />
                 <div className="h-screen w-4/5 overflow-y-scroll px-4 py-6">
                     <h1 className="relative mb-8 text-2xl font-extrabold text-gray1 after:absolute after:-bottom-2 after:left-0 after:h-[1.5px] after:w-full after:bg-[#EBEFF2] md:text-3xl">
@@ -65,26 +93,33 @@ const EditPost = () => {
                     <div className="mt-8 rounded-2xl bg-white p-5 shadow-box">
                         <form className="mt-6 grid grid-cols-3 gap-6" onSubmit={handleSubmit}>
                             <div>
-                                <label for="photo" className="cursor-pointer">
-                                    <div className="flex h-full w-full items-center justify-center rounded-lg bg-gray2">
-                                        <img src={upload} className="h-16" alt="" />
-                                    </div>
+                                <label htmlFor="photo" className="cursor-pointer">
+                                    {photoUrl ? (
+                                        <div className="h-80 w-full overflow-hidden rounded-lg">
+                                            <img src={photoUrl} alt="Preview" className="h-full w-full object-cover" />
+                                        </div>
+                                    ) : (
+                                        <div className="flex h-full w-full items-center justify-center rounded-lg bg-gray2">
+                                            <img src={photo} className="h-16" alt="" />
+                                        </div>
+                                    )}
                                 </label>
                                 <input
                                     type="file"
                                     id="photo"
-                                    value={photo}
+                                    name="photo"
+                                    accept="image/*"
                                     onChange={handlePhotoChange}
                                     className="hidden"
-                                    required
                                 />
                             </div>
                             <div className="col-span-2">
                                 <div className="mb-4">
-                                    <label for="title">Title</label>
+                                    <label htmlFor="title">Title</label>
                                     <input
                                         type="text"
                                         id="title"
+                                        name="title"
                                         value={title}
                                         onChange={handleTitleChange}
                                         className="mt-2 w-full rounded-lg bg-gray2 p-2 focus:outline-primary"
@@ -92,9 +127,10 @@ const EditPost = () => {
                                     />
                                 </div>
                                 <div>
-                                    <label for="message">Description</label>
+                                    <label htmlFor="message">Description</label>
                                     <textarea
                                         id="message"
+                                        name="description"
                                         rows="8"
                                         value={description}
                                         onChange={handleDescChange}
