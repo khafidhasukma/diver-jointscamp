@@ -40,7 +40,7 @@ const CreatePost = () => {
                 },
             })
             .then(() => {
-                toast.success("Pesan berhasil terkirim!");
+                toast.success("Story successfully created!");
                 setTitle("");
                 setMessage("");
                 setPhoto(null);
@@ -48,7 +48,7 @@ const CreatePost = () => {
             })
             .catch((error) => {
                 console.log(error);
-                toast.error(error.message);
+                toast.error("Failed to create story.");
             });
     };
 

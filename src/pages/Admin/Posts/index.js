@@ -35,7 +35,7 @@ const PostsAdmin = () => {
             .delete(`/story/delete/${id}`)
             .then(() => {
                 setPosts(posts.filter((post) => post.id !== id));
-                toast.success("Successfully deleted stories!");
+                toast.success("Stories successfully deleted!");
             })
             .catch((error) => {
                 console.error(error);

@@ -1,12 +1,12 @@
 import Sidebar from "../../../components/Sidebar";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axiosInstance from "../../../utils/axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import upload from "../../../assets/images/icons/upload.svg";
 
 const EditPost = () => {
+    const navigate = useNavigate();
     const { id } = useParams();
     const [photo, setPhoto] = useState(null);
     const [photoUrl, setPhotoUrl] = useState(null);
@@ -53,17 +53,20 @@ const EditPost = () => {
         }
 
         axiosInstance
-            .put(`/story/update/${id}`, data, {
+            .patch(`/story/update/${id}`, data, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
             })
             .then(() => {
-                toast.success("Stories berhasil diupdate!");
+                toast.success("Stories updated successfully!");
+                setTimeout(() => {
+                    navigate("/admin/posts");
+                }, 1000);
             })
             .catch((error) => {
                 console.log(error);
-                toast.error(error.message);
+                toast.error("Failed to update stories!");
             });
     };
 
