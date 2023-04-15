@@ -4,10 +4,18 @@ import logout from "../../assets/images/icons/logout.svg";
 import stories from "../../assets/images/icons/tasks-active.svg";
 import adminContact from "../../assets/images/icons/adminContact.svg";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
+    const navigate = useNavigate();
     const email = localStorage.getItem("email");
     const username = localStorage.getItem("username");
+
+    // Logout
+    const handleLogout = () => {
+        localStorage.removeItem("Token");
+        navigate("/login");
+    };
 
     return (
         <>
@@ -47,7 +55,9 @@ const Sidebar = () => {
                         </NavLink>
                     </li>
                 </ul>
-                <button className="absolute bottom-0 left-0 flex w-full justify-center gap-2 bg-darkBlue py-4 font-bold text-white">
+                <button
+                    onClick={handleLogout}
+                    className="absolute bottom-0 left-0 flex w-full justify-center gap-2 bg-darkBlue py-4 font-bold text-white">
                     <p>Sign Out</p>
                     <img src={logout} alt="" />
                 </button>
